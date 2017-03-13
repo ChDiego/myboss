@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ include file="/WEB-INF/views/include/taglib.jsp"%><%--
+<%@ include file="/WEB-INF/views/include/taglib.jsp"%>
 <html>
 <head>
 	<title>菜单导航</title>
@@ -26,7 +26,7 @@
 		});
 	</script>
 </head>
-<body> --%>
+<body>
 	<div class="accordion" id="menu-${param.parentId}"><c:set var="menuList" value="${fns:getMenuList()}"/><c:set var="firstMenu" value="true"/><c:forEach items="${menuList}" var="menu" varStatus="idxStatus"><c:if test="${menu.parent.id eq (not empty param.parentId ? param.parentId:1)&&menu.isShow eq '1'}">
 		<div class="accordion-group">
 		    <div class="accordion-heading">
@@ -42,6 +42,6 @@
 				</div>
 		    </div>
 		</div>
-	</c:if></c:forEach></div><%--
+	</c:if></c:forEach></div>
 </body>
-</html> --%>
+</html> 

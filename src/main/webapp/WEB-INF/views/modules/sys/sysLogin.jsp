@@ -52,10 +52,10 @@
 		<input type="text" id="username" name="username" class="input-block-level required" value="${username}">
 		<label class="input-label" for="password">密码</label>
 		<input type="password" id="password" name="password" class="input-block-level required">
-		<c:if test="${isValidateCodeLogin}"><div class="validateCode">
+		<%-- <c:if test="${isValidateCodeLogin}"><div class="validateCode">
 			<label class="input-label mid" for="validateCode">验证码</label>
 			<sys:validateCode name="validateCode" inputCssStyle="margin-bottom:0;"/>
-		</div></c:if><%--
+		</div></c:if> --%><%--
 		<label for="mobile" title="手机登录"><input type="checkbox" id="mobileLogin" name="mobileLogin" ${mobileLogin ? 'checked' : ''}/></label> --%>
 		<input class="btn btn-large btn-primary" type="submit" value="登 录"/>&nbsp;&nbsp;
 		<label for="rememberMe" title="下次不需要再登录"><input type="checkbox" id="rememberMe" name="rememberMe" ${rememberMe ? 'checked' : ''}/> 记住我（公共场所慎用）</label>
