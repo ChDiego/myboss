@@ -32,6 +32,7 @@ import com.myboss.cn.common.utils.Encodes;
 import com.myboss.cn.common.utils.SpringContextHolder;
 import com.myboss.cn.common.web.Servlets;
 import com.myboss.cn.modules.sys.entity.Menu;
+import com.myboss.cn.modules.sys.entity.Resoure;
 import com.myboss.cn.modules.sys.entity.Role;
 import com.myboss.cn.modules.sys.entity.User;
 import com.myboss.cn.modules.sys.service.SystemService;
@@ -141,12 +142,17 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
 			SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 			List<Menu> list = UserUtils.getMenuList();
 			for (Menu menu : list){
-				if (StringUtils.isNotBlank(menu.getPermission())){
+				/*if (StringUtils.isNotBlank(menu.getPermission())){
 					// 添加基于Permission的权限信息
 					for (String permission : StringUtils.split(menu.getPermission(),",")){
 						info.addStringPermission(permission);
 					}
+				}*/
+				List<Resoure> resoureList = menu.getResoure();
+				for(Resoure resoure : resoureList){
+					info.addStringPermission(resoure.getPermission());
 				}
+				
 			}
 			// 添加用户权限
 			info.addStringPermission("user");

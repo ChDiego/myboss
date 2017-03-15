@@ -7,7 +7,7 @@
 <input id="${id}" name="${name}" type="hidden" value="${value}"/><a id="${id}Button" href="javascript:" class="btn">选择</a>&nbsp;&nbsp;
 <script type="text/javascript">
 	$("#${id}Button").click(function(){
-		top.$.jBox.open("iframe:${ctx}/tag/iconselect?value="+$("#${id}").val(), "选择图标", 700, $(top.document).height()-180, {
+		$.jBox.open("iframe:${ctx}/tag/iconselect?value="+$("#${id}").val(), "选择图标", 700, $(top.document).height()-180, {
             buttons:{"确定":"ok", "清除":"clear", "关闭":true}, submit:function(v, h, f){
                 if (v=="ok"){
                 	var icon = h.find("iframe")[0].contentWindow.$("#icon").val();

@@ -30,6 +30,7 @@ public class Menu extends DataEntity<Menu> {
 	private Integer sort; 	// 排序
 	private String isShow; 	// 是否在菜单中显示（1：显示；0：不显示）
 	private String permission; // 权限标识
+	private List<Resoure> resoure;
 	
 	private String userId;
 	
@@ -123,6 +124,14 @@ public class Menu extends DataEntity<Menu> {
 
 	public void setPermission(String permission) {
 		this.permission = permission;
+	}
+	
+	public List<Resoure> getResoure() {
+		return resoure;
+	}
+
+	public void setResoure(List<Resoure> resoure) {
+		this.resoure = resoure;
 	}
 
 	public String getParentId() {

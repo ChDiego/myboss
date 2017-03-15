@@ -17,11 +17,13 @@ import com.myboss.cn.common.utils.SpringContextHolder;
 import com.myboss.cn.modules.sys.dao.AreaDao;
 import com.myboss.cn.modules.sys.dao.MenuDao;
 import com.myboss.cn.modules.sys.dao.OfficeDao;
+import com.myboss.cn.modules.sys.dao.ResoureDao;
 import com.myboss.cn.modules.sys.dao.RoleDao;
 import com.myboss.cn.modules.sys.dao.UserDao;
 import com.myboss.cn.modules.sys.entity.Area;
 import com.myboss.cn.modules.sys.entity.Menu;
 import com.myboss.cn.modules.sys.entity.Office;
+import com.myboss.cn.modules.sys.entity.Resoure;
 import com.myboss.cn.modules.sys.entity.Role;
 import com.myboss.cn.modules.sys.entity.User;
 import com.myboss.cn.modules.sys.security.SystemAuthorizingRealm.Principal;
@@ -38,6 +40,7 @@ public class UserUtils {
 	private static MenuDao menuDao = SpringContextHolder.getBean(MenuDao.class);
 	private static AreaDao areaDao = SpringContextHolder.getBean(AreaDao.class);
 	private static OfficeDao officeDao = SpringContextHolder.getBean(OfficeDao.class);
+	private static ResoureDao resoureDao = SpringContextHolder.getBean(ResoureDao.class);
 
 	public static final String USER_CACHE = "userCache";
 	public static final String USER_CACHE_ID_ = "id_";
@@ -164,11 +167,20 @@ public class UserUtils {
 			User user = getUser();
 			if (user.isAdmin()){
 				menuList = menuDao.findAllList(new Menu());
+				
 			}else{
 				Menu m = new Menu();
 				m.setUserId(user.getId());
 				menuList = menuDao.findByUserId(m);
 			}
+			for(Menu menu : menuList)
+			{
+				Resoure resoure = new Resoure();
+				resoure.setMenu(menu);
+				List<Resoure> resoureList = resoureDao.findAllListByMenu(resoure);
+				menu.setResoure(resoureList);
+			}
+			
 			putCache(CACHE_MENU_LIST, menuList);
 		}
 		return menuList;

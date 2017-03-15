@@ -26,7 +26,7 @@ public class TestData extends DataEntity<TestData> {
 	private String sex;		// 性别
 	private Date inDate;		// 加入日期
 	private Date beginInDate;		// 开始 加入日期
-	private Date endInDate;		// 结束 加入日期
+	private Date endInDate;		// 结束 加入日期 firstprice  secondprice   thirdprice
 	
 	public TestData() {
 		super();
